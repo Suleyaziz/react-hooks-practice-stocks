@@ -1,19 +1,29 @@
 import React from "react";
-import StockContainer from "./StockContainer";
-import PortfolioContainer from "./PortfolioContainer";
-import SearchBar from "./SearchBar";
 
-function MainContainer() {
+function MainContainer({ sortBy, setSortBy, filterBy, setFilterBy }) {
   return (
-    <div>
-      <SearchBar />
-      <div className="row">
-        <div className="col-8">
-          <StockContainer />
-        </div>
-        <div className="col-4">
-          <PortfolioContainer />
-        </div>
+    <div className="main-container">
+      <div className="filters">
+        <label>
+          Sort by:
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <option value="">Select...</option>
+            <option value="alpha">Alphabetically</option>
+            <option value="price">Price</option>
+          </select>
+        </label>
+        
+        <label>
+          Filter by type:
+          <select value={filterBy} onChange={(e) => setFilterBy(e.target.value)}>
+            <option value="All">All</option>
+            <option value="Tech">Tech</option>
+            <option value="Finance">Finance</option>
+            <option value="Sportswear">Sportswear</option>
+            <option value="Energy">Energy</option>
+            {/* Add more types as needed based on your data */}
+          </select>
+        </label>
       </div>
     </div>
   );
